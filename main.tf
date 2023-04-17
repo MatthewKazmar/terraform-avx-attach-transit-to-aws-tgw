@@ -13,7 +13,7 @@ resource "aws_subnet" "this" {
 
 #Transit VPC always goes to default.
 resource "aws_ec2_transit_gateway_vpc_attachment" "this" {
-  subnet_ids         = aws_subnet.this[*].id
+  subnet_ids         = [for v in aws_subnet.this : v.id]
   vpc_id             = var.transit_vpc_id
   transit_gateway_id = var.tgw_id
   #transit_gateway_default_route_table_association = false
