@@ -20,7 +20,7 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "this" {
   #transit_gateway_default_route_table_propagation = false
 
   tags = {
-    Name = "${var.transit_vpc_name}-attachment"
+    Name = "${var.transit_vpc_name}-vpc-attachment"
   }
 }
 
