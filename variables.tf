@@ -11,6 +11,11 @@ variable "transit_vpc_id" {
 variable "transit_vpc_cidr" {
   description = "VPC cidr of Transit Gateway"
   type        = string
+
+  validation {
+    condition     = split("/", var.transit_vpc_cidr)[1] == "23"
+    error_message = "This module needs a /23."
+  }
 }
 
 variable "transit_vpc_subnets" {
